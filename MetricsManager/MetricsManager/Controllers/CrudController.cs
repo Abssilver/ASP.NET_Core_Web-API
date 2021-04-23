@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using MetricsManager.Model;
 
 namespace MetricsManager.Controllers
@@ -8,42 +8,51 @@ namespace MetricsManager.Controllers
     [ApiController]
     public class CrudController : ControllerBase
     {
-        private readonly ValuesHolder _holder;
+        private readonly TemperatureModel _temperatureModel;
 
-        public CrudController(ValuesHolder holder)
+        public CrudController(TemperatureModel temperatureModel)
         {
-            _holder = holder;
+            _temperatureModel = temperatureModel;
         }
 
+        //http://localhost:51684/api/crud/create?date=2021-04-17&temperature=9
         [HttpPost("create")]
-        public IActionResult Create([FromQuery] string input)
+        public IActionResult Create([FromQuery] DateTime date, [FromQuery] int temperature)
         {
-            _holder.Values.Add(input);
+            _temperatureModel.AddValue(date, temperature);
             return Ok();
         }
-
+        //http://localhost:51684/api/crud/read_all
+        [HttpGet("read_all")]
+        public IActionResult ReadAll()
+        {
+            return Ok(_temperatureModel.GetTemperatureValues());
+        }
+        //http://localhost:51684/api/crud/read?from=2021-04-19&to=2021-04-21
         [HttpGet("read")]
-        public IActionResult Read()
+        public IActionResult Read([FromQuery] DateTime from, [FromQuery] DateTime to)
         {
-            return Ok(_holder.Values);
+            return Ok(_temperatureModel.GetTemperatureValues(from, to));
         }
-
+        //http://localhost:51684/api/crud/update?date=2021-04-21&temperature=6
         [HttpPut("update")]
-        public IActionResult Update([FromQuery] string stringsToUpdate, [FromQuery] string newValue)
+        public IActionResult Update([FromQuery] DateTime date, [FromQuery] int temperature)
         {
-            for (int i = 0; i < _holder.Values.Count; i++)
-            {
-                if (_holder.Values[i] == stringsToUpdate)
-                    _holder.Values[i] = newValue;
-            }
-
+            _temperatureModel.UpdateValue(date, temperature);
             return Ok();
         }
-
+        //http://localhost:51684/api/crud/delete?date=2021-04-22
         [HttpDelete("delete")]
-        public IActionResult Delete([FromQuery] string stringsToDelete)
+        public IActionResult Delete([FromQuery] DateTime date)
         {
-            _holder.Values = _holder.Values.Where(w => w != stringsToDelete).ToList();
+            _temperatureModel.DeleteValue(date);
+            return Ok();
+        }
+        //http://localhost:51684/api/crud/delete_range?from=2021-04-17&to=2021-04-21
+        [HttpDelete("delete_range")]
+        public IActionResult Delete([FromQuery] DateTime from, [FromQuery] DateTime to)
+        {
+            _temperatureModel.DeleteRange(from, to);
             return Ok();
         }
     }
