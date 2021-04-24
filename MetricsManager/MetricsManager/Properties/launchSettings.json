@@ -11,7 +11,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/crud/read_all",
+      "launchUrl": "api/agents/disable/0",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
