@@ -7,6 +7,13 @@ namespace MetricsManager.Controllers
     [ApiController]
     public class AgentsController : ControllerBase
     {
+        private readonly AgentsModel _agentsModel;
+
+        public AgentsController(AgentsModel agentsModel)
+        {
+            _agentsModel = agentsModel;
+        }
+
         [HttpPost("register")]
         public IActionResult RegisterAgent([FromBody] AgentInfo agentInfo)
         {
@@ -22,11 +29,15 @@ namespace MetricsManager.Controllers
         {
             return Ok();
         }
-
         [HttpPut("disable/{agentId}")]
         public IActionResult DisableAgentById([FromRoute] int agentId)
         {
             return Ok();
+        }
+        [HttpGet("get_agents")]
+        public IActionResult GetRegisterAgents()
+        {
+            return Ok(_agentsModel.GetAgentsInfo());
         }
     }
 }
