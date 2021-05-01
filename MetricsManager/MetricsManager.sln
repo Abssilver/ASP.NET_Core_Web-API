@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetricsManager", "MetricsManager\MetricsManager.csproj", "{6E34DFCA-EC99-4EE2-9BD6-17E79B3E7991}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetricsManagerTests", "MetricsManagerTests\MetricsManagerTests.csproj", "{3AC3B0D7-5EBF-4DE5-8450-EA81AE1B04FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetricsAgent", "MetricsAgent\MetricsAgent.csproj", "{A4516675-2EDD-4D1D-8FA4-46663568BB59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetricsAgentTests", "MetricsAgentTests\MetricsAgentTests.csproj", "{02CA2DE0-EBAB-410F-B165-8487B439EDD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +18,17 @@ Global
 		{6E34DFCA-EC99-4EE2-9BD6-17E79B3E7991}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E34DFCA-EC99-4EE2-9BD6-17E79B3E7991}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E34DFCA-EC99-4EE2-9BD6-17E79B3E7991}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AC3B0D7-5EBF-4DE5-8450-EA81AE1B04FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AC3B0D7-5EBF-4DE5-8450-EA81AE1B04FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AC3B0D7-5EBF-4DE5-8450-EA81AE1B04FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AC3B0D7-5EBF-4DE5-8450-EA81AE1B04FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4516675-2EDD-4D1D-8FA4-46663568BB59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4516675-2EDD-4D1D-8FA4-46663568BB59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4516675-2EDD-4D1D-8FA4-46663568BB59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4516675-2EDD-4D1D-8FA4-46663568BB59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02CA2DE0-EBAB-410F-B165-8487B439EDD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02CA2DE0-EBAB-410F-B165-8487B439EDD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02CA2DE0-EBAB-410F-B165-8487B439EDD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02CA2DE0-EBAB-410F-B165-8487B439EDD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
