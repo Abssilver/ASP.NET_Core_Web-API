@@ -55,9 +55,6 @@ namespace MetricsAgent.Controllers
                 Metrics = new List<CpuMetricDto>()
             };
 
-            if (metrics is null)
-                return BadRequest();
-                    
             foreach (var metric in metrics)
             {
                 response.Metrics.Add(new CpuMetricDto

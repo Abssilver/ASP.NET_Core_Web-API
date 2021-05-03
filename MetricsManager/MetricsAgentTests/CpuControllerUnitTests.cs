@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using MetricsAgent.Controllers;
 using MetricsAgent.DataAccessLayer;
 using MetricsAgent.Metrics;
@@ -47,7 +48,8 @@ namespace MetricsAgentTests
         public void GetByTimePeriod_ShouldCall_GetByTimePeriod_From_Repository()
         {
             _repositoryMock.Setup(repository =>
-                repository.GetByTimePeriod(It.IsAny<DateTimeOffset>(), It.IsAny<DateTimeOffset>())).Verifiable();
+                repository.GetByTimePeriod(It.IsAny<DateTimeOffset>(), It.IsAny<DateTimeOffset>()))
+                .Returns(new List<CpuMetric>());
             
             _controller.GetByTimePeriod(DateTimeOffset.Now, DateTimeOffset.Now);
             
