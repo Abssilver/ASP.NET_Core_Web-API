@@ -1,6 +1,7 @@
-﻿using MetricsAgent.Metrics;
+﻿using Core.Interfaces;
+using MetricsAgent.DataAccessLayer.Models;
 
-namespace MetricsAgent.DataAccessLayer
+namespace MetricsAgent.DataAccessLayer.Interfaces
 {
     // маркировочный интерфейс
     // необходим, чтобы проверить работу репозитория на тесте-заглушке

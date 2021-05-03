@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MetricsAgent.DataAccessLayer
+namespace Core.Interfaces
 {
     public interface IRepository<T> where T : class
     {
