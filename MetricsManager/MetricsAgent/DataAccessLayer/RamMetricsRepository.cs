@@ -8,11 +8,16 @@ namespace MetricsAgent.DataAccessLayer
     //TODO: Большое дублирование кода в репозиториях
     public class RamMetricsRepository : IRamMetricsRepository
     {
-        private const string ConnectionString = "Data Source=metrics.db;Version=3;Pooling=true;Max Pool Size=100;";
+        private readonly string _connectionString;
+        
+        public RamMetricsRepository(IDatabaseSettingsProvider dbProvider)
+        {
+            _connectionString = dbProvider.GetConnectionString();
+        }
         
         public void Create(RamMetric item)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
+            using var connection = new SQLiteConnection(_connectionString);
             connection.Open();
             
             using var cmd = new SQLiteCommand(connection)
@@ -29,7 +34,7 @@ namespace MetricsAgent.DataAccessLayer
         
         public IList<RamMetric> GetByTimePeriod(DateTimeOffset from, DateTimeOffset to)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
+            using var connection = new SQLiteConnection(_connectionString);
             connection.Open();
             using var cmd = new SQLiteCommand(connection)
             {

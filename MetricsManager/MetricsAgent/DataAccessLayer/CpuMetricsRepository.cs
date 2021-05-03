@@ -7,11 +7,16 @@ namespace MetricsAgent.DataAccessLayer
 {
     public class CpuMetricsRepository : ICpuMetricsRepository
     {
-        private const string ConnectionString = "Data Source=metrics.db;Version=3;Pooling=true;Max Pool Size=100;";
-        
+        private readonly string _connectionString;
+
+        public CpuMetricsRepository(IDatabaseSettingsProvider dbProvider)
+        {
+            _connectionString = dbProvider.GetConnectionString();
+        }
+
         public void Create(CpuMetric item)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
+            using var connection = new SQLiteConnection(_connectionString);
             connection.Open();
             // создаем команду
             using var cmd = new SQLiteCommand(connection)
@@ -32,7 +37,7 @@ namespace MetricsAgent.DataAccessLayer
         
         public IList<CpuMetric> GetByTimePeriod(DateTimeOffset from, DateTimeOffset to)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
+            using var connection = new SQLiteConnection(_connectionString);
             connection.Open();
             using var cmd = new SQLiteCommand(connection);
             
@@ -59,7 +64,7 @@ namespace MetricsAgent.DataAccessLayer
         //TODO: методы из методички (из-за неиспользования могут быть удалены)
         public void Delete(int id)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
+            using var connection = new SQLiteConnection(_connectionString);
             connection.Open();
             using var cmd = new SQLiteCommand(connection);
             // прописываем в команду SQL запрос на удаление данных
@@ -72,7 +77,7 @@ namespace MetricsAgent.DataAccessLayer
 
         public void Update(CpuMetric item)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
+            using var connection = new SQLiteConnection(_connectionString);
             using var cmd = new SQLiteCommand(connection);
             // прописываем в команду SQL запрос на обновление данных
             cmd.CommandText = "UPDATE cpumetrics SET value = @value, time = @time WHERE id=@id;";
@@ -86,7 +91,7 @@ namespace MetricsAgent.DataAccessLayer
         
         public IList<CpuMetric> GetAll()
         {
-            using var connection = new SQLiteConnection(ConnectionString);
+            using var connection = new SQLiteConnection(_connectionString);
             connection.Open();
             using var cmd = new SQLiteCommand(connection);
 
@@ -115,7 +120,7 @@ namespace MetricsAgent.DataAccessLayer
 
         public CpuMetric GetById(int id)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
+            using var connection = new SQLiteConnection(_connectionString);
             connection.Open();
             using var cmd = new SQLiteCommand(connection);
             cmd.CommandText = "SELECT * FROM cpumetrics WHERE id=@id";

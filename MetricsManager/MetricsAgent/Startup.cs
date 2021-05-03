@@ -28,10 +28,12 @@ namespace MetricsAgent
             services.AddScoped<IHddMetricsRepository,HddMetricsRepository>();
             services.AddScoped<INetworkMetricsRepository,NetworkMetricsRepository>();
             services.AddScoped<IRamMetricsRepository,RamMetricsRepository>();
+            services.AddScoped<IDatabaseSettingsProvider, DatabaseSettingsProvider>();
         }
 
         private void ConfigureSqlLiteConnection(IServiceCollection services)
         {
+            //TODO: попробовать убрать и эту строчку
             const string connectionString = "Data Source=metrics.db;Version=3;Pooling=true;Max Pool Size=100;";
             var connection = new SQLiteConnection(connectionString);
             connection.Open();

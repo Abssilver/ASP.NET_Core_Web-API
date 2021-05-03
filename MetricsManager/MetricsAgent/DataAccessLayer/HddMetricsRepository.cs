@@ -7,12 +7,16 @@ namespace MetricsAgent.DataAccessLayer
 {
     public class HddMetricsRepository : IHddMetricsRepository
     {
-        private const string ConnectionString = "Data Source=metrics.db;Version=3;Pooling=true;Max Pool Size=100;";
+        private readonly string _connectionString;
         
+        public HddMetricsRepository(IDatabaseSettingsProvider dbProvider)
+        {
+            _connectionString = dbProvider.GetConnectionString();
+        }
         
         public void Create(HddMetric item)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
+            using var connection = new SQLiteConnection(_connectionString);
             connection.Open();
             
             using var cmd = new SQLiteCommand(connection)
@@ -28,7 +32,7 @@ namespace MetricsAgent.DataAccessLayer
         }
         public IList<HddMetric> GetByTimePeriod(DateTimeOffset from, DateTimeOffset to)
         {
-            using var connection = new SQLiteConnection(ConnectionString);
+            using var connection = new SQLiteConnection(_connectionString);
             connection.Open();
             using var cmd = new SQLiteCommand(connection)
             {
