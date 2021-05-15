@@ -1,4 +1,6 @@
-﻿namespace MetricsAgent.DataAccessLayer
+﻿using MetricsAgent.DataAccessLayer.Interfaces;
+
+namespace MetricsAgent.DataAccessLayer
 {
     public class DatabaseSettingsProvider: IDatabaseSettingsProvider
     {

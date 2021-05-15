@@ -1,9 +1,9 @@
 ﻿
 using System;
 
-namespace MetricsAgent.Responses
+namespace MetricsAgent.Responses.DataTransferObjects
 {
-    public class CpuMetricDto
+    public class NetworkMetricDto
     {
         public DateTimeOffset Time { get; set; }
         public int Value { get; set; }

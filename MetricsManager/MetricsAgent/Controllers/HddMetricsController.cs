@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using MetricsAgent.DataAccessLayer;
-using MetricsAgent.Metrics;
+using AutoMapper;
+using MetricsAgent.DataAccessLayer.Interfaces;
+using MetricsAgent.DataAccessLayer.Models;
 using MetricsAgent.Requests;
 using MetricsAgent.Responses;
+using MetricsAgent.Responses.DataTransferObjects;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -15,9 +17,15 @@ namespace MetricsAgent.Controllers
     {
         private readonly ILogger<HddMetricsController> _logger;
         private readonly IHddMetricsRepository _repository;
-        public HddMetricsController(IHddMetricsRepository repository, ILogger<HddMetricsController> logger)
+        private readonly IMapper _mapper;
+
+        public HddMetricsController(
+            IHddMetricsRepository repository,
+            ILogger<HddMetricsController> logger,
+            IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
             _logger = logger;
             _logger.LogInformation(1, "NLog встроен в HddMetricsController");
         }
@@ -56,22 +64,10 @@ namespace MetricsAgent.Controllers
 
             foreach (var metric in metrics)
             {
-                response.Metrics.Add(new HddMetricDto
-                {
-                    Time = metric.Time, 
-                    Value = metric.Value, 
-                    Id = metric.Id
-                });
+                response.Metrics.Add(_mapper.Map<HddMetricDto>(metric));
             }
 
             return Ok(response);
         }
-        /*
-        [HttpGet("left")]
-        public IActionResult GetRemainingFreeDiskSpaceMetrics()
-        {
-            return Ok();
-        }
-        */
     }
 }

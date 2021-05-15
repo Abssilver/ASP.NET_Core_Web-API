@@ -1,6 +1,11 @@
 using System;
 using System.Data.SQLite;
+using AutoMapper;
+using Dapper;
 using MetricsAgent.DataAccessLayer;
+using MetricsAgent.DataAccessLayer.Interfaces;
+using MetricsAgent.DataAccessLayer.Repositories;
+using MetricsAgent.MappingSettings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +34,17 @@ namespace MetricsAgent
             services.AddScoped<INetworkMetricsRepository,NetworkMetricsRepository>();
             services.AddScoped<IRamMetricsRepository,RamMetricsRepository>();
             services.AddScoped<IDatabaseSettingsProvider, DatabaseSettingsProvider>();
+            ConfigureMapper(services);
+        }
+
+        private void ConfigureMapper(IServiceCollection services)
+        {
+            var mapperConfiguration = new MapperConfiguration(
+                mp => mp.AddProfile(new MapperProfile()));
+            var mapper = mapperConfiguration.CreateMapper();
+            services.AddSingleton(mapper);
+            
+            SqlMapper.AddTypeHandler(new DateTimeOffsetHandler());
         }
 
         private void ConfigureSqlLiteConnection(IServiceCollection services)
