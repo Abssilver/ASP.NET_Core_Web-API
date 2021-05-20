@@ -31,10 +31,13 @@ namespace MetricsAgent.DataAccessLayer.Repositories
         {
             using var connection = new SQLiteConnection(_connectionString);
             return connection
-                .Query<DotNetMetric>(string.Format(
-                    "SELECT Id, Time, Value FROM dotnetmetrics WHERE time BETWEEN {0} AND {1}", 
-                    from.ToUnixTimeSeconds(), 
-                    to.ToUnixTimeSeconds()))
+                .Query<DotNetMetric>(
+                    "SELECT Id, Time, Value FROM dotnetmetrics WHERE time BETWEEN @fromTime AND @ToTime",
+                    new
+                    {
+                        fromTime = from.ToUnixTimeSeconds(),
+                        ToTime = to.ToUnixTimeSeconds()
+                    })
                 .ToList();
         }
     }
