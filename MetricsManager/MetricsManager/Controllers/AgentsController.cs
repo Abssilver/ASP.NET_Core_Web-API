@@ -32,6 +32,21 @@ namespace MetricsManager.Controllers
 
         //http://localhost:51685/api/agents/register
         //Body: { "Address": "http://localhost:51684" }
+        /// <summary>
+        /// Производит регистрацию агента (Создание записи в БД)
+        /// </summary>
+        /// <remarks>
+        /// Пример запроса:
+        ///
+        ///     POST url:port/api/agents/register
+        /// 
+        ///     Body: { "Address": "url:port" }
+        ///
+        /// </remarks>
+        /// <param name="request">Данные запроса по агенту, который подлежит регистрации</param>
+        /// <returns>None</returns>
+        /// <response code="200">Все хорошо</response>
+        /// <response code="400">Передали неправильные параметры</response>
         [HttpPost("register")]
         public IActionResult RegisterAgent([FromBody] AgentInfoRegisterRequest request)
         {
@@ -47,8 +62,21 @@ namespace MetricsManager.Controllers
             return Ok();
         }
         
-        //http://localhost:51685/api/agents/unregister
-        //Body: { "Address": "http://localhost:51684" }
+        /// <summary>
+        /// Производит снятие регистрации агента (удаление из БД)
+        /// </summary>
+        /// <remarks>
+        /// Пример запроса:
+        ///
+        ///     DELETE url:port/api/agents/unregister
+        ///
+        ///     Body: { "Address": "url:port" }
+        /// 
+        /// </remarks>
+        /// <param name="request">Данные запроса по агенту, который подлежит снятию с регистрации</param>
+        /// <returns>None</returns>
+        /// <response code="200">Все хорошо</response>
+        /// <response code="400">Передали неправильные параметры</response>
         [HttpDelete("unregister")]
         public IActionResult UnregisterAgent([FromBody] AgentInfoUnregisterRequest request)
         {
@@ -60,7 +88,9 @@ namespace MetricsManager.Controllers
             return Ok();
         }
         
-        
+        /// <summary>
+        /// Недокумментированный метод
+        /// </summary>
         [HttpPut("enable/{agentId}")]
         public IActionResult EnableAgentById([FromRoute] int agentId)
         {
@@ -68,7 +98,9 @@ namespace MetricsManager.Controllers
             return Ok();
         }
         
-        
+        /// <summary>
+        /// Недокумментированный метод
+        /// </summary>
         [HttpPut("disable/{agentId}")]
         public IActionResult DisableAgentById([FromRoute] int agentId)
         {
@@ -76,7 +108,18 @@ namespace MetricsManager.Controllers
             return Ok();
         }
         
-        
+        /// <summary>
+        /// Получает список всех зарегистрированных агентов
+        /// </summary>
+        /// <remarks>
+        /// Пример запроса:
+        ///
+        ///     GET url:port/api/agents/get_agents
+        /// 
+        /// </remarks>
+        /// <returns>Список зарегистрированных агентов</returns>
+        /// <response code="200">Все хорошо</response>
+        /// <response code="400">Передали неправильные параметры</response>
         [HttpGet("get_agents")]
         public IActionResult GetRegisterAgents()
         {

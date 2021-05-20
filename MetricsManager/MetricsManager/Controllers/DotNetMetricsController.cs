@@ -29,7 +29,21 @@ namespace MetricsManager.Controllers
 
         }
 
-        //http://localhost:51685/api/metrics/dotnet/agent/1/from/2021-05-14/to/2021-06-20
+        /// <summary>
+        /// Получает метрики DotNet на заданном диапазоне времени по определенному агенту
+        /// </summary>
+        /// <remarks>
+        /// Пример запроса (Допускается также ввод временной метки в формате 2021-05-14):
+        ///
+        ///     GET url:port/api/metrics/dotnet/agent/1/from/2021-05-14T00:00:00/to/2022-06-20T00:00:00
+        /// 
+        /// </remarks>
+        /// <param name="agentId">Id зарегистрированного агента</param>
+        /// <param name="fromTime">Начальная метка времени с 01.01.1970 в формате DateTimeOffset</param>
+        /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
+        /// <returns>Список метрик, которые были сохранены в заданном диапазоне времени</returns>
+        /// <response code="200">Все хорошо</response>
+        /// <response code="400">Передали неправильные параметры</response>
         [HttpGet("agent/{agentId}/from/{fromTime}/to/{toTime}")]
         public IActionResult GetMetricsFromAgent(
             [FromRoute] int agentId,
@@ -53,7 +67,20 @@ namespace MetricsManager.Controllers
             return Ok(response);
         }
         
-        //http://localhost:51685/api/metrics/dotnet/cluster/from/2021-05-14/to/2021-06-20
+        /// <summary>
+        /// Получает метрики DotNet на заданном диапазоне времени по всем агентам
+        /// </summary>
+        /// <remarks>
+        /// Пример запроса (Допускается также ввод временной метки в формате 2021-05-14):
+        ///
+        ///     GET url:port/api/metrics/dotnet/cluster/from/2021-05-14T00:00:00/to/2022-06-20T00:00:00
+        /// 
+        /// </remarks>
+        /// <param name="fromTime">Начальная метка времени с 01.01.1970 в формате DateTimeOffset</param>
+        /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
+        /// <returns>Список метрик, которые были сохранены в заданном диапазоне времени</returns>
+        /// <response code="200">Все хорошо</response>
+        /// <response code="400">Передали неправильные параметры</response>
         [HttpGet("cluster/from/{fromTime}/to/{toTime}")]
         public IActionResult GetMetricsFromAllCluster(
             [FromRoute] DateTimeOffset fromTime, 
