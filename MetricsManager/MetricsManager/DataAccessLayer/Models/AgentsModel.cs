@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MetricsManager.Model
+namespace MetricsManager.DataAccessLayer.Models
 {
     public class AgentsModel
     { 

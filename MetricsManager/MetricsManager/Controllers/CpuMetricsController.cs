@@ -1,5 +1,9 @@
 ﻿using System;
-using MetricsManager.Enums;
+using System.Collections.Generic;
+using AutoMapper;
+using MetricsManager.DataAccessLayer.Interfaces;
+using MetricsManager.Responses;
+using MetricsManager.Responses.DataTransferObjects;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -10,56 +14,65 @@ namespace MetricsManager.Controllers
     public class CpuMetricsController : ControllerBase
     {
         private readonly ILogger<CpuMetricsController> _logger;
+        private readonly ICpuMetricsManagerRepository _managerRepository;
+        private readonly IMapper _mapper;
 
-        public CpuMetricsController(ILogger<CpuMetricsController> logger)
+        public CpuMetricsController(
+            ICpuMetricsManagerRepository managerRepository, 
+            ILogger<CpuMetricsController> logger, 
+            IMapper mapper)
         {
+            _managerRepository = managerRepository;
+            _mapper = mapper;
             _logger = logger;
-            _logger.LogDebug(1, "NLog встроен в CpuMetricsController");
+            _logger.LogInformation(1, "NLog встроен в CpuMetricsController");
         }
 
-        
+        //http://localhost:51685/api/metrics/cpu/agent/1/from/2021-05-14/to/2021-06-20
         [HttpGet("agent/{agentId}/from/{fromTime}/to/{toTime}")]
         public IActionResult GetMetricsFromAgent(
             [FromRoute] int agentId,
-            [FromRoute] TimeSpan fromTime,
-            [FromRoute] TimeSpan toTime)
+            [FromRoute] DateTimeOffset fromTime,
+            [FromRoute] DateTimeOffset toTime)
         {
             _logger.LogInformation($"Агент: {agentId}, From:{fromTime}, To:{toTime}");
-            return Ok();
+            
+            var metrics = _managerRepository.GetByTimePeriodFromAgent(fromTime, toTime, agentId);
+
+            var response = new GetByPeriodCpuMetricsApiResponse
+            {
+                Metrics = new List<CpuMetricDto>()
+            };
+
+            foreach (var metric in metrics)
+            {
+                response.Metrics.Add(_mapper.Map<CpuMetricDto>(metric));
+            }
+
+            return Ok(response);
         }
 
-        
-        [HttpGet("agent/{agentId}/from/{fromTime}/to/{toTime}/percentiles/{percentile}")]
-        public IActionResult GetMetricsByPercentileFromAgent(
-            [FromRoute] int agentId, 
-            [FromRoute] TimeSpan fromTime, 
-            [FromRoute] TimeSpan toTime,
-            [FromRoute] Percentile percentile)
-        {
-            _logger.LogInformation($"Агент: {agentId}, From:{fromTime}, To:{toTime}, Percentile:{percentile}");
-            return Ok();
-        }
-
-        
+        //http://localhost:51685/api/metrics/cpu/cluster/from/2021-05-14/to/2021-06-20
         [HttpGet("cluster/from/{fromTime}/to/{toTime}")]
         public IActionResult GetMetricsFromAllCluster(
-            [FromRoute] TimeSpan fromTime, 
-            [FromRoute] TimeSpan toTime)
+            [FromRoute] DateTimeOffset fromTime, 
+            [FromRoute] DateTimeOffset toTime)
         {
             _logger.LogInformation($"Общие данные From:{fromTime}, To:{toTime}");
-            return Ok();
-        }
 
-        
-        [HttpGet("cluster/from/{fromTime}/to/{toTime}/percentiles/{percentile}")]
-        public IActionResult GetMetricsByPercentileFromAllCluster(
-            [FromRoute] TimeSpan fromTime, 
-            [FromRoute] TimeSpan toTime,
-            [FromRoute] Percentile percentile)
-        {
-            _logger.LogInformation($"Общие данные From:{fromTime}, To:{toTime}, Percentile:{percentile}");
-            return Ok();
+            var metrics = _managerRepository.GetByTimePeriod(fromTime, toTime);
+
+            var response = new GetByPeriodCpuMetricsApiResponse
+            {
+                Metrics = new List<CpuMetricDto>()
+            };
+
+            foreach (var metric in metrics)
+            {
+                response.Metrics.Add(_mapper.Map<CpuMetricDto>(metric));
+            }
+
+            return Ok(response);
         }
     }
-
 }

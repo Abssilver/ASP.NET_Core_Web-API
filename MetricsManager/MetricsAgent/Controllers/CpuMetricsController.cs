@@ -47,7 +47,7 @@ namespace MetricsAgent.Controllers
             return Ok();
         }
 
-        //http://localhost:51684/api/metrics/cpu/from/2021-04-10/to/2021-05-03
+        //http://localhost:51684/api/metrics/cpu/from/2021-05-14/to/2021-05-20
         [HttpGet("from/{fromTime}/to/{toTime}")]
         public IActionResult GetByTimePeriod(
             [FromRoute] DateTimeOffset fromTime,
