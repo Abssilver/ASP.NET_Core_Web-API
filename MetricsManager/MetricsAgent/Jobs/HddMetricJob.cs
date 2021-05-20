@@ -7,6 +7,7 @@ using MetricsAgent.DataAccessLayer.Models;
 
 namespace MetricsAgent.Jobs
 {
+    [DisallowConcurrentExecution]
     public class HddMetricJob : IJob
     {
         private readonly IHddMetricsRepository _repository;

@@ -31,10 +31,13 @@ namespace MetricsAgent.DataAccessLayer.Repositories
         {
             using var connection = new SQLiteConnection(_connectionString);
             return connection
-                .Query<NetworkMetric>(string.Format(
-                    "SELECT Id, Time, Value FROM networkmetrics WHERE time BETWEEN {0} AND {1}", 
-                    from.ToUnixTimeSeconds(), 
-                    to.ToUnixTimeSeconds()))
+                .Query<NetworkMetric>(
+                    "SELECT Id, Time, Value FROM networkmetrics WHERE time BETWEEN @fromTime AND @ToTime",
+                    new
+                    {
+                        fromTime = from.ToUnixTimeSeconds(),
+                        ToTime = to.ToUnixTimeSeconds()
+                    })
                 .ToList();
         }
     }

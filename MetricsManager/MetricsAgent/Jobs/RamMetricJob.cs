@@ -7,6 +7,7 @@ using MetricsAgent.DataAccessLayer.Models;
 
 namespace MetricsAgent.Jobs
 {
+    [DisallowConcurrentExecution]
     public class RamMetricJob : IJob
     {
         private readonly IRamMetricsRepository _repository;

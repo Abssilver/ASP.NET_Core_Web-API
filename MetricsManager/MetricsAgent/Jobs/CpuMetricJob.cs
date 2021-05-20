@@ -7,6 +7,7 @@ using MetricsAgent.DataAccessLayer.Models;
 
 namespace MetricsAgent.Jobs
 {
+    [DisallowConcurrentExecution]
     public class CpuMetricJob : IJob
     {
         private ICpuMetricsRepository _repository;

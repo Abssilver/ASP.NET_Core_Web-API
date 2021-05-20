@@ -31,10 +31,13 @@ namespace MetricsAgent.DataAccessLayer.Repositories
         {
             using var connection = new SQLiteConnection(_connectionString);
             return connection
-                .Query<RamMetric>(string.Format(
-                    "SELECT Id, Time, Value FROM rammetrics WHERE time BETWEEN {0} AND {1}", 
-                    from.ToUnixTimeSeconds(), 
-                    to.ToUnixTimeSeconds()))
+                .Query<RamMetric>(
+                    "SELECT Id, Time, Value FROM rammetrics WHERE time BETWEEN @fromTime AND @ToTime",
+                    new
+                    {
+                        fromTime = from.ToUnixTimeSeconds(),
+                        ToTime = to.ToUnixTimeSeconds()
+                    })
                 .ToList();
         }
     }

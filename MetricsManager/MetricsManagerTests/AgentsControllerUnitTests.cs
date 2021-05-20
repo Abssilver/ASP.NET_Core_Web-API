@@ -1,5 +1,8 @@
+using System.Collections.Generic;
+using AutoMapper;
 using MetricsManager.Controllers;
-using MetricsManager.Model;
+using MetricsManager.DataAccessLayer.Interfaces;
+using MetricsManager.DataAccessLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -10,37 +13,49 @@ namespace MetricsManagerTests
     public class AgentsControllerUnitTests
     {
         private readonly AgentsController _controller;
-
+        
+        private readonly Mock<IAgentInfoRepository> _repositoryMock;
+        private readonly Mock<ILogger<AgentsController>> _loggerMock;
+        private readonly Mock<IMapper> _mapperMock;
         public AgentsControllerUnitTests()
         {
-            var agentsModel = new AgentsModel();
-            var loggerMock = new Mock<ILogger<AgentsController>>();
+            _repositoryMock = new Mock<IAgentInfoRepository>();
+            _loggerMock = new Mock<ILogger<AgentsController>>();
+            _mapperMock = new Mock<IMapper>();
 
-            _controller = new AgentsController(agentsModel, loggerMock.Object);
+            _controller = new AgentsController(_repositoryMock.Object, _loggerMock.Object, _mapperMock.Object);
         }
 
         [Fact]
-        public void RegisterAgent_ReturnsOk()
+        public void RegisterAgent_ShouldCall_Create_From_Repository()
         {
-            var agentInfo = new AgentInfo();
+            _repositoryMock.Setup(repository =>
+                repository.Create(It.IsAny<AgentInfo>())).Verifiable();
+            
+            var result = _controller.RegisterAgent(new MetricsManager.Requests.AgentInfoRegisterRequest
+            {
+                Address = string.Empty,
+            });
 
-            var result = _controller.RegisterAgent(agentInfo);
-
-            _ = Assert.IsAssignableFrom<IActionResult>(result);
+            _repositoryMock.Verify(repository =>
+                repository.Create(It.IsAny<AgentInfo>()), Times.AtMostOnce());
         }
-
 
         [Fact]
-        public void UnregisterAgent_ReturnsOk()
+        public void UnregisterAgent_ShouldCall_Delete_From_Repository()
         {
-            var agentInfo = new AgentInfo();
+            _repositoryMock.Setup(repository =>
+                repository.Delete(It.IsAny<string>())).Verifiable();
+            
+            var result = _controller.UnregisterAgent(new MetricsManager.Requests.AgentInfoUnregisterRequest
+            {
+                Address = string.Empty,
+            });
 
-            var result = _controller.UnregisterAgent(agentInfo);
-
-            _ = Assert.IsAssignableFrom<IActionResult>(result);
+            _repositoryMock.Verify(repository =>
+                repository.Delete(It.IsAny<string>()), Times.AtMostOnce());
         }
-
-
+        
         [Fact]
         public void EnableAgentById_ReturnsOk()
         {
@@ -50,8 +65,7 @@ namespace MetricsManagerTests
 
             _ = Assert.IsAssignableFrom<IActionResult>(result);
         }
-
-
+        
         [Fact]
         public void DisableAgentById_ReturnsOk()
         {
@@ -61,15 +75,17 @@ namespace MetricsManagerTests
 
             _ = Assert.IsAssignableFrom<IActionResult>(result);
         }
-
-
+        
         [Fact]
-        public void GetRegisterAgents_ReturnsOk()
+        public void GetRegisterAgents_ShouldCall_GetAgents_From_Repository()
         {
+            _repositoryMock.Setup(repository => repository.GetAgents())
+                .Returns(new List<AgentInfo>());
 
-            var result = _controller.GetRegisterAgents();
+            _controller.GetRegisterAgents();
 
-            _ = Assert.IsAssignableFrom<IActionResult>(result);
+            _repositoryMock.Verify(repository =>
+                    repository.GetAgents(), Times.AtMostOnce());
         }
     }
 }
