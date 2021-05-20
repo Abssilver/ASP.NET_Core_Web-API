@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetricsAgent", "MetricsAgen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetricsAgentTests", "MetricsAgentTests\MetricsAgentTests.csproj", "{02CA2DE0-EBAB-410F-B165-8487B439EDD8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{2C561EA8-C60E-4327-851A-47702B7AF13C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{02CA2DE0-EBAB-410F-B165-8487B439EDD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02CA2DE0-EBAB-410F-B165-8487B439EDD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02CA2DE0-EBAB-410F-B165-8487B439EDD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C561EA8-C60E-4327-851A-47702B7AF13C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C561EA8-C60E-4327-851A-47702B7AF13C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C561EA8-C60E-4327-851A-47702B7AF13C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C561EA8-C60E-4327-851A-47702B7AF13C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

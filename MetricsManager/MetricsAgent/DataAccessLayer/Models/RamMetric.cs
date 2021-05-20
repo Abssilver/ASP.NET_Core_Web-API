@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace MetricsAgent.Metrics
+namespace MetricsAgent.DataAccessLayer.Models
 {
-    public class DotNetMetric
+    public class RamMetric
     {
         public int Id { get; set; } 
         public int Value { get; set; } 

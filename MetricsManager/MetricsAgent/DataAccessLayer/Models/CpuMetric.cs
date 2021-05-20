@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MetricsAgent.Metrics
+namespace MetricsAgent.DataAccessLayer.Models
 {
     public class CpuMetric
     {

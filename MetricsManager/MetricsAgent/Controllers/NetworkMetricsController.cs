@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using MetricsAgent.DataAccessLayer;
-using MetricsAgent.Metrics;
+using AutoMapper;
+using MetricsAgent.DataAccessLayer.Interfaces;
+using MetricsAgent.DataAccessLayer.Models;
 using MetricsAgent.Requests;
 using MetricsAgent.Responses;
+using MetricsAgent.Responses.DataTransferObjects;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -15,10 +17,15 @@ namespace MetricsAgent.Controllers
     {
         private readonly ILogger<NetworkMetricsController> _logger;
         private readonly INetworkMetricsRepository _repository;
+        private readonly IMapper _mapper;
         
-        public NetworkMetricsController(INetworkMetricsRepository repository, ILogger<NetworkMetricsController> logger)
+        public NetworkMetricsController(
+            INetworkMetricsRepository repository, 
+            ILogger<NetworkMetricsController> logger,
+            IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
             _logger = logger;
             _logger.LogInformation(1, "NLog встроен в NetworkMetricsController");
         }
@@ -57,12 +64,7 @@ namespace MetricsAgent.Controllers
 
             foreach (var metric in metrics)
             {
-                response.Metrics.Add(new NetworkMetricDto
-                {
-                    Time = metric.Time, 
-                    Value = metric.Value, 
-                    Id = metric.Id
-                });
+                response.Metrics.Add(_mapper.Map<NetworkMetricDto>(metric));
             }
 
             return Ok(response);
