@@ -18,6 +18,7 @@ namespace MetricsManager.Jobs
         
         public RamMetricJob(
             IRamMetricsManagerRepository managerRepository,
+            //IMetricsAgentClient client,
             IRamMetricsAgentClient client,
             IAgentInfoRepository agentsRepository)
         {

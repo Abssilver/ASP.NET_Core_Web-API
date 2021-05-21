@@ -18,6 +18,7 @@ namespace MetricsManager.Jobs
 
         public DotNetMetricJob(
             IDotNetMetricsManagerRepository managerRepository,
+            //IMetricsAgentClient client,
             IDotNetMetricsAgentClient client,
             IAgentInfoRepository agentsRepository)
         {

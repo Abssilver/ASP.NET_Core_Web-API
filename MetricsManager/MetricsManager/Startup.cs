@@ -83,7 +83,7 @@ namespace MetricsManager
             services.AddSingleton<IRamMetricsManagerRepository,RamMetricsRepository>();
             services.AddSingleton<IDatabaseSettingsProvider, DatabaseSettingsProvider>();
             
-            /*services.AddHttpClient<IClient, MetricsAgentClient>()
+            /*services.AddHttpClient<IMetricsAgentClient, MetricsAgentClient>()
                 .AddTransientHttpErrorPolicy(p => 
                     p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(1000)));*/
             

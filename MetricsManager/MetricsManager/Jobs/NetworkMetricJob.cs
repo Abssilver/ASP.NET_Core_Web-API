@@ -18,6 +18,7 @@ namespace MetricsManager.Jobs
         
         public NetworkMetricJob(
             INetworkMetricsManagerRepository managerRepository,
+            //IMetricsAgentClient client,
             INetworkMetricsAgentClient client,
             IAgentInfoRepository agentsRepository)
         {

@@ -32,7 +32,7 @@
 
     <!--<Target Name="NSwag" AfterTargets="Build">
         <Copy SourceFiles="@(Reference)" DestinationFolder="$(OutDir)References" />
-        <Exec Command="$(NSwagExe_Core50) run nswag.json /variables:Configuration=$(Configuration)" />
+        <Exec Command="$(NSwagExe_Net50) run nswag.json /variables:Configuration=$(Configuration)" />
         <RemoveDir Directories="$(OutDir)References" />
     </Target>-->
 </Project>

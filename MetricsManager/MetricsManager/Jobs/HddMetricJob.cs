@@ -18,6 +18,7 @@ namespace MetricsManager.Jobs
         
         public HddMetricJob(
             IHddMetricsManagerRepository managerRepository,
+            //IMetricsAgentClient client,
             IHddMetricsAgentClient client,
             IAgentInfoRepository agentsRepository)
         {

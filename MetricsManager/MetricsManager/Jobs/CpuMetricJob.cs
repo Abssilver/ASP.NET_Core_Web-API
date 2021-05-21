@@ -18,7 +18,8 @@ namespace MetricsManager.Jobs
 
         public CpuMetricJob(
             ICpuMetricsManagerRepository managerRepository, 
-            ICpuMetricsAgentClient client, 
+            //IMetricsAgentClient client, 
+            ICpuMetricsAgentClient client,
             IAgentInfoRepository agentsRepository)
         {
             _managerRepository = managerRepository;
