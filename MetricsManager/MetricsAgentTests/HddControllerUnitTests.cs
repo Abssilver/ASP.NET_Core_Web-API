@@ -27,23 +27,6 @@ namespace MetricsAgentTests
             _controller = new HddMetricsController(_repositoryMock.Object, _loggerMock.Object, _mapperMock.Object);
         }
 
-
-        [Fact]
-        public void Create_ShouldCall_Create_From_Repository()
-        {
-            _repositoryMock.Setup(repository =>
-                repository.Create(It.IsAny<HddMetric>())).Verifiable();
-
-            _controller.Create(new MetricsAgent.Requests.HddMetricCreateRequest
-            {
-                Time = DateTimeOffset.Now,
-                Value = 50
-            });
-
-            _repositoryMock.Verify(repository =>
-                repository.Create(It.IsAny<HddMetric>()), Times.AtMostOnce());
-        }
-        
         [Fact]
         public void GetByTimePeriod_ShouldCall_GetByTimePeriod_From_Repository()
         {

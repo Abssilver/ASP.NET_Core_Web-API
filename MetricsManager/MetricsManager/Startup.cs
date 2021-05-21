@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using AutoMapper;
+using Core.Client.Generated;
 using Dapper;
 using FluentMigrator.Runner;
 using MetricsManager.Client;
@@ -82,6 +83,18 @@ namespace MetricsManager
             services.AddSingleton<IRamMetricsManagerRepository,RamMetricsRepository>();
             services.AddSingleton<IDatabaseSettingsProvider, DatabaseSettingsProvider>();
             
+            /*services.AddHttpClient<IClient, MetricsAgentClient>()
+                .AddTransientHttpErrorPolicy(p => 
+                    p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(1000)));*/
+            
+            ConfigureClient(services);
+            ConfigureMapper(services);
+            ConfigureMigration(services);
+            ConfigureSwagger(services);
+        }
+
+        private void ConfigureClient(IServiceCollection services)
+        {
             services.AddHttpClient<ICpuMetricsAgentClient, CpuMetricsAgentClient>()
                 .AddTransientHttpErrorPolicy(p => 
                     p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(1000)));
@@ -101,10 +114,6 @@ namespace MetricsManager
             services.AddHttpClient<IRamMetricsAgentClient, RamMetricsAgentClient>()
                 .AddTransientHttpErrorPolicy(p => 
                     p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(1000)));
-            
-            ConfigureMapper(services);
-            ConfigureMigration(services);
-            ConfigureSwagger(services);
         }
 
         private void ConfigureSwagger(IServiceCollection services)
@@ -114,7 +123,7 @@ namespace MetricsManager
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "API сервиса агента сбора метрик",
+                    Title = "API сервиса менеджера агента сбора метрик",
                     Description = "Тут можно поиграть с api нашего сервиса",
                     TermsOfService = new Uri("https://example.com/terms"),
                     Contact = new OpenApiContact
@@ -180,7 +189,7 @@ namespace MetricsManager
             // по которой будет построен UI).
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API сервиса агента сбора метрик");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API сервиса менеджера агента сбора метрик");
                 c.RoutePrefix = string.Empty;
             });
 

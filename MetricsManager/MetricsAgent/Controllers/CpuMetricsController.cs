@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using AutoMapper;
 using MetricsAgent.DataAccessLayer.Interfaces;
-using MetricsAgent.DataAccessLayer.Models;
-using MetricsAgent.Requests;
 using MetricsAgent.Responses;
 using MetricsAgent.Responses.DataTransferObjects;
 using Microsoft.AspNetCore.Mvc;
@@ -30,24 +28,20 @@ namespace MetricsAgent.Controllers
             _logger.LogInformation(1, "NLog встроен в CpuMetricsController");
         }
 
-        //TODO: по замечанию create быть не должно
-        //http://localhost:51684/api/metrics/cpu/create
-        //{ "Time": "2021-05-02", "Value": 100 }
-        [HttpPost("create")]
-        public IActionResult Create([FromBody] CpuMetricCreateRequest request)
-        {
-            _logger.LogInformation($"Создается запись с данными Time:{request.Time}; Value:{request.Value}");
-
-            _repository.Create(new CpuMetric
-            {
-                Time = request.Time,
-                Value = request.Value
-            });
-
-            return Ok();
-        }
-
-        //http://localhost:51684/api/metrics/cpu/from/2021-05-14/to/2021-05-20
+        /// <summary>
+        /// Получает метрики CPU на заданном диапазоне времени
+        /// </summary>
+        /// <remarks>
+        /// Пример запроса (Допускается также ввод временной метки в формате 2021-05-14):
+        ///
+        ///     GET url:port/api/metrics/cpu/from/2021-05-14T00:00:00/to/2022-06-20T00:00:00
+        /// 
+        /// </remarks>
+        /// <param name="fromTime">Начальная метка времени с 01.01.1970 в формате DateTimeOffset</param>
+        /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
+        /// <returns>Список метрик, которые были сохранены в заданном диапазоне времени</returns>
+        /// <response code="200">Все хорошо</response>
+        /// <response code="400">Передали неправильные параметры</response>
         [HttpGet("from/{fromTime}/to/{toTime}")]
         public IActionResult GetByTimePeriod(
             [FromRoute] DateTimeOffset fromTime,

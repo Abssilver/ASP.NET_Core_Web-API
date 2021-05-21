@@ -27,23 +27,6 @@ namespace MetricsAgentTests
             _controller = new NetworkMetricsController(_repositoryMock.Object, _loggerMock.Object, _mapperMock.Object);
         }
 
-
-        [Fact]
-        public void Create_ShouldCall_Create_From_Repository()
-        {
-            _repositoryMock.Setup(repository =>
-                repository.Create(It.IsAny<NetworkMetric>())).Verifiable();
-
-            _controller.Create(new MetricsAgent.Requests.NetworkMetricCreateRequest
-            {
-                Time = DateTimeOffset.Now,
-                Value = 50
-            });
-
-            _repositoryMock.Verify(repository =>
-                repository.Create(It.IsAny<NetworkMetric>()), Times.AtMostOnce());
-        }
-        
         [Fact]
         public void GetByTimePeriod_ShouldCall_GetByTimePeriod_From_Repository()
         {

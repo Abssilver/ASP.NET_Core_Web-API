@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using System.Reflection;
 using AutoMapper;
 using Dapper;
 using FluentMigrator.Runner;
@@ -14,6 +17,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using Quartz;
 using Quartz.Impl;
 using Quartz.Spi;
@@ -74,6 +78,8 @@ namespace MetricsAgent
             services.AddSingleton<IRamMetricsRepository,RamMetricsRepository>();
             services.AddSingleton<IDatabaseSettingsProvider, DatabaseSettingsProvider>();
             
+            ConfigureSwagger(services);
+            
             ConfigureMapper(services);
             ConfigureMigration(services);
         }
@@ -90,6 +96,36 @@ namespace MetricsAgent
                     .ScanIn(typeof(Startup).Assembly).For.Migrations()
                 ).AddLogging(lb => lb
                     .AddFluentMigratorConsole());
+        }
+        
+        private void ConfigureSwagger(IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "API сервиса агента сбора метрик",
+                    Description = "Тут можно поиграть с api нашего сервиса",
+                    TermsOfService = new Uri("https://example.com/terms"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Joe The Cat",
+                        Email = string.Empty,
+                        Url = new Uri("https://gb.ru"),
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "можно указать под какой лицензией все опубликовано",
+                        Url = new Uri("https://example.com/license"),
+                    }
+                });
+                // Указываем файл из которого брать комментарии для Swagger UI
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
+            });
         }
 
         private void ConfigureMapper(IServiceCollection services)
@@ -113,6 +149,14 @@ namespace MetricsAgent
             app.UseRouting();
 
             app.UseAuthorization();
+            
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API сервиса агента сбора метрик");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseEndpoints(endpoints =>
             {

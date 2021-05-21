@@ -29,6 +29,13 @@
     <PropertyGroup>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>$(NoWarn);1591</NoWarn>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     </PropertyGroup>
+
+    <!--<Target Name="NSwag" AfterTargets="Build">
+        <Copy SourceFiles="@(Reference)" DestinationFolder="$(OutDir)References" />
+        <Exec Command="$(NSwagExe_Core50) run nswag.json /variables:Configuration=$(Configuration)" />
+        <RemoveDir Directories="$(OutDir)References" />
+    </Target>-->
 
 </Project>
