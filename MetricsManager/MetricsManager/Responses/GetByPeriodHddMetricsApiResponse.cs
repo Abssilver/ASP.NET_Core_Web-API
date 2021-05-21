@@ -5,6 +5,6 @@ namespace MetricsManager.Responses
 {
     public class GetByPeriodHddMetricsApiResponse
     {
-        public List<HddMetricDto> Metrics { get; set; }
+        public List<ApiHddMetricDto> Metrics { get; set; }
     }
 }

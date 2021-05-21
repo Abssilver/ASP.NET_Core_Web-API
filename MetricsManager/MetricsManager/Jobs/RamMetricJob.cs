@@ -18,7 +18,6 @@ namespace MetricsManager.Jobs
         
         public RamMetricJob(
             IRamMetricsManagerRepository managerRepository,
-            //IMetricsAgentClient client,
             IRamMetricsAgentClient client,
             IAgentInfoRepository agentsRepository)
         {
@@ -36,14 +35,16 @@ namespace MetricsManager.Jobs
                 var metrics = _agentClient.GetRamMetrics(new RamMetricApiGetRequest
                     {
                         FromTime = _managerRepository.GetLastRecordDate(),
-                        ToTime = DateTimeOffset.UtcNow,
+                        //TODO: косяк со временем, надо брать большее значение, чем текущая дата
+                        //ToTime = DateTimeOffset.UtcNow
+                        ToTime = DateTimeOffset.FromUnixTimeSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 86_400),
                         ClientBaseAddress = info.Url.ToString(),
                     }
                 );
 
                 metrics?.Metrics.ForEach(metric =>
                     {
-                        _managerRepository.Create(new RamMetric
+                        _managerRepository.Create(new ApiRamMetric
                         {
                             Time = metric.Time,
                             Value = metric.Value,

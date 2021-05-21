@@ -2,7 +2,7 @@
 
 namespace MetricsManager.DataAccessLayer.Models
 {
-    public class DotNetMetric
+    public class ApiRamMetric
     {
         public int Id { get; set; } 
         public int Value { get; set; } 

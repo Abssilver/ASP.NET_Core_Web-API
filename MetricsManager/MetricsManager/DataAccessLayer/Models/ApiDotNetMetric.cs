@@ -2,7 +2,7 @@
 
 namespace MetricsManager.DataAccessLayer.Models
 {
-    public class NetworkMetric
+    public class ApiDotNetMetric
     {
         public int Id { get; set; } 
         public int Value { get; set; } 

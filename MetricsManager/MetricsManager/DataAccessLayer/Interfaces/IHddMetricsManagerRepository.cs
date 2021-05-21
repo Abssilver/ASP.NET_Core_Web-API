@@ -2,7 +2,7 @@
 
 namespace MetricsManager.DataAccessLayer.Interfaces
 {
-    public interface IHddMetricsManagerRepository : IManagerRepository<HddMetric>
+    public interface IHddMetricsManagerRepository : IManagerRepository<ApiHddMetric>
     {
     }
 }

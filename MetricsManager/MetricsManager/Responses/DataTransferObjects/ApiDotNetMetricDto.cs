@@ -3,7 +3,7 @@ using System;
 
 namespace MetricsManager.Responses.DataTransferObjects
 {
-    public class RamMetricDto
+    public class ApiDotNetMetricDto
     {
         public DateTimeOffset Time { get; set; }
         public int Value { get; set; }

@@ -18,7 +18,7 @@ namespace MetricsManager.DataAccessLayer.Repositories
             _connectionString = dbProvider.GetConnectionString();
         }
         
-        public void Create(HddMetric item)
+        public void Create(ApiHddMetric item)
         {
             using var connection = new SQLiteConnection(_connectionString);
             connection.Execute("INSERT INTO hddmetrics(value, time, Agent_id) VALUES(@value, @time, @Agent_id)",
@@ -29,11 +29,11 @@ namespace MetricsManager.DataAccessLayer.Repositories
                 });
         }
         
-        public IList<HddMetric> GetByTimePeriod(DateTimeOffset from, DateTimeOffset to)
+        public IList<ApiHddMetric> GetByTimePeriod(DateTimeOffset from, DateTimeOffset to)
         {
             using var connection = new SQLiteConnection(_connectionString);
             return connection
-                .Query<HddMetric>(
+                .Query<ApiHddMetric>(
                     "SELECT Id, Time, Value, Agent_Id AS AgentId FROM hddmetrics WHERE time BETWEEN @fromTime AND @ToTime",
                     new
                     {
@@ -43,11 +43,11 @@ namespace MetricsManager.DataAccessLayer.Repositories
                 .ToList();
         }
 
-        public IList<HddMetric> GetByTimePeriodFromAgent(DateTimeOffset from, DateTimeOffset to, int agentId)
+        public IList<ApiHddMetric> GetByTimePeriodFromAgent(DateTimeOffset from, DateTimeOffset to, int agentId)
         {
             using var connection = new SQLiteConnection(_connectionString);
             return connection
-                .Query<HddMetric>(
+                .Query<ApiHddMetric>(
                     "SELECT Id, Time, Value, Agent_Id AS AgentId FROM hddmetrics WHERE (time BETWEEN @fromTime AND @ToTime) AND (Agent_Id = @agent_Id)",
                     new
                     {

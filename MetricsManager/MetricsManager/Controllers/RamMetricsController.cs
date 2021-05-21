@@ -55,12 +55,12 @@ namespace MetricsManager.Controllers
 
             var response = new GetByPeriodRamMetricsApiResponse
             {
-                Metrics = new List<RamMetricDto>()
+                Metrics = new List<ApiRamMetricDto>()
             };
 
             foreach (var metric in metrics)
             {
-                response.Metrics.Add(_mapper.Map<RamMetricDto>(metric));
+                response.Metrics.Add(_mapper.Map<ApiRamMetricDto>(metric));
             }
 
             return Ok(response);
@@ -91,12 +91,12 @@ namespace MetricsManager.Controllers
 
             var response = new GetByPeriodRamMetricsApiResponse
             {
-                Metrics = new List<RamMetricDto>()
+                Metrics = new List<ApiRamMetricDto>()
             };
 
             foreach (var metric in metrics)
             {
-                response.Metrics.Add(_mapper.Map<RamMetricDto>(metric));
+                response.Metrics.Add(_mapper.Map<ApiRamMetricDto>(metric));
             }
 
             return Ok(response);

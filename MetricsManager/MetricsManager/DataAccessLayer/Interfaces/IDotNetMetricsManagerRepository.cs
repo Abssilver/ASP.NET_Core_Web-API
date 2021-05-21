@@ -2,7 +2,7 @@
 
 namespace MetricsManager.DataAccessLayer.Interfaces
 {
-    public interface IDotNetMetricsManagerRepository : IManagerRepository<DotNetMetric>
+    public interface IDotNetMetricsManagerRepository : IManagerRepository<ApiDotNetMetric>
     {
     }
 }

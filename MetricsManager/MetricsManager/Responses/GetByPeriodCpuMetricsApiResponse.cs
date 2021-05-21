@@ -5,6 +5,6 @@ namespace MetricsManager.Responses
 {
     public class GetByPeriodCpuMetricsApiResponse
     {
-        public List<CpuMetricDto> Metrics { get; set; }
+        public List<ApiCpuMetricDto> Metrics { get; set; }
     }
 }

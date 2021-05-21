@@ -56,12 +56,12 @@ namespace MetricsManager.Controllers
 
             var response = new GetByPeriodDotNetMetricsApiResponse
             {
-                Metrics = new List<DotNetMetricDto>()
+                Metrics = new List<ApiDotNetMetricDto>()
             };
 
             foreach (var metric in metrics)
             {
-                response.Metrics.Add(_mapper.Map<DotNetMetricDto>(metric));
+                response.Metrics.Add(_mapper.Map<ApiDotNetMetricDto>(metric));
             }
 
             return Ok(response);
@@ -92,12 +92,12 @@ namespace MetricsManager.Controllers
 
             var response = new GetByPeriodDotNetMetricsApiResponse
             {
-                Metrics = new List<DotNetMetricDto>()
+                Metrics = new List<ApiDotNetMetricDto>()
             };
 
             foreach (var metric in metrics)
             {
-                response.Metrics.Add(_mapper.Map<DotNetMetricDto>(metric));
+                response.Metrics.Add(_mapper.Map<ApiDotNetMetricDto>(metric));
             }
 
             return Ok(response);

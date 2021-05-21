@@ -18,7 +18,7 @@ namespace MetricsManager.DataAccessLayer.Repositories
             _connectionString = dbProvider.GetConnectionString();
         }
         
-        public void Create(RamMetric item)
+        public void Create(ApiRamMetric item)
         {
             using var connection = new SQLiteConnection(_connectionString);
             connection.Execute("INSERT INTO rammetrics(value, time, Agent_id) VALUES(@value, @time, @Agent_id)",
@@ -29,11 +29,11 @@ namespace MetricsManager.DataAccessLayer.Repositories
                 });
         }
 
-        public IList<RamMetric> GetByTimePeriod(DateTimeOffset from, DateTimeOffset to)
+        public IList<ApiRamMetric> GetByTimePeriod(DateTimeOffset from, DateTimeOffset to)
         {
             using var connection = new SQLiteConnection(_connectionString);
             return connection
-                .Query<RamMetric>(
+                .Query<ApiRamMetric>(
                     "SELECT Id, Time, Value, Agent_Id AS AgentId FROM rammetrics WHERE time BETWEEN @fromTime AND @ToTime",
                     new
                     {
@@ -43,11 +43,11 @@ namespace MetricsManager.DataAccessLayer.Repositories
                 .ToList();
         }
 
-        public IList<RamMetric> GetByTimePeriodFromAgent(DateTimeOffset from, DateTimeOffset to, int agentId)
+        public IList<ApiRamMetric> GetByTimePeriodFromAgent(DateTimeOffset from, DateTimeOffset to, int agentId)
         {
             using var connection = new SQLiteConnection(_connectionString);
             return connection
-                .Query<RamMetric>(
+                .Query<ApiRamMetric>(
                     "SELECT Id, Time, Value, Agent_Id AS AgentId FROM rammetrics WHERE (time BETWEEN @fromTime AND @ToTime) AND (Agent_Id = @agent_Id)",
                     new
                     {

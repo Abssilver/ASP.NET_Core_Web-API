@@ -55,12 +55,12 @@ namespace MetricsManager.Controllers
 
             var response = new GetByPeriodHddMetricsApiResponse
             {
-                Metrics = new List<HddMetricDto>()
+                Metrics = new List<ApiHddMetricDto>()
             };
 
             foreach (var metric in metrics)
             {
-                response.Metrics.Add(_mapper.Map<HddMetricDto>(metric));
+                response.Metrics.Add(_mapper.Map<ApiHddMetricDto>(metric));
             }
 
             return Ok(response);
@@ -91,12 +91,12 @@ namespace MetricsManager.Controllers
 
             var response = new GetByPeriodHddMetricsApiResponse
             {
-                Metrics = new List<HddMetricDto>()
+                Metrics = new List<ApiHddMetricDto>()
             };
 
             foreach (var metric in metrics)
             {
-                response.Metrics.Add(_mapper.Map<HddMetricDto>(metric));
+                response.Metrics.Add(_mapper.Map<ApiHddMetricDto>(metric));
             }
 
             return Ok(response);

@@ -18,7 +18,7 @@ namespace MetricsManager.DataAccessLayer.Repositories
             _connectionString = dbProvider.GetConnectionString();
         }
         
-        public void Create(DotNetMetric item)
+        public void Create(ApiDotNetMetric item)
         {
             using var connection = new SQLiteConnection(_connectionString);
             connection.Execute("INSERT INTO dotnetmetrics(value, time, Agent_id) VALUES(@value, @time, @Agent_id)", 
@@ -29,11 +29,11 @@ namespace MetricsManager.DataAccessLayer.Repositories
                 });
         }
         
-        public IList<DotNetMetric> GetByTimePeriod(DateTimeOffset from, DateTimeOffset to)
+        public IList<ApiDotNetMetric> GetByTimePeriod(DateTimeOffset from, DateTimeOffset to)
         {
             using var connection = new SQLiteConnection(_connectionString);
             return connection
-                .Query<DotNetMetric>(
+                .Query<ApiDotNetMetric>(
                     "SELECT Id, Time, Value, Agent_Id AS AgentId FROM dotnetmetrics WHERE time BETWEEN @fromTime AND @ToTime",
                     new
                     {
@@ -43,11 +43,11 @@ namespace MetricsManager.DataAccessLayer.Repositories
                 .ToList();
         }
         
-        public IList<DotNetMetric> GetByTimePeriodFromAgent(DateTimeOffset from, DateTimeOffset to, int agentId)
+        public IList<ApiDotNetMetric> GetByTimePeriodFromAgent(DateTimeOffset from, DateTimeOffset to, int agentId)
         {
             using var connection = new SQLiteConnection(_connectionString);
             return connection
-                .Query<DotNetMetric>(
+                .Query<ApiDotNetMetric>(
                     "SELECT Id, Time, Value, Agent_Id AS AgentId FROM dotnetmetrics WHERE (time BETWEEN @fromTime AND @ToTime) AND (Agent_Id = @agent_Id)",
                     new
                     {

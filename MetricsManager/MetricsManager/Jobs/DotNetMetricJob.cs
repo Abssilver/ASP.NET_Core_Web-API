@@ -18,7 +18,6 @@ namespace MetricsManager.Jobs
 
         public DotNetMetricJob(
             IDotNetMetricsManagerRepository managerRepository,
-            //IMetricsAgentClient client,
             IDotNetMetricsAgentClient client,
             IAgentInfoRepository agentsRepository)
         {
@@ -37,14 +36,16 @@ namespace MetricsManager.Jobs
                 var metrics = _agentClient.GetDotNetMetrics(new DotNetMetricApiGetRequest
                     {
                         FromTime = _managerRepository.GetLastRecordDate(),
-                        ToTime = DateTimeOffset.UtcNow,
+                        //TODO: косяк со временем, надо брать большее значение, чем текущая дата
+                        //ToTime = DateTimeOffset.UtcNow
+                        ToTime = DateTimeOffset.FromUnixTimeSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 86_400),
                         ClientBaseAddress = info.Url.ToString(),
                     }
                 );
 
                 metrics?.Metrics.ForEach(metric =>
                     {
-                        _managerRepository.Create(new DotNetMetric
+                        _managerRepository.Create(new ApiDotNetMetric
                         {
                             Time = metric.Time,
                             Value = metric.Value,

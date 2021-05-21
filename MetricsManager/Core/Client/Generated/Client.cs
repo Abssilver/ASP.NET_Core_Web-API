@@ -23,14 +23,14 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ApiMetricsCpuFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
+        System.Threading.Tasks.Task<GetByPeriodCpuMetricsResponse> ApiMetricsCpuFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
     
         /// <summary>Получает метрики CPU на заданном диапазоне времени</summary>
         /// <param name="fromTime">Начальная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        void ApiMetricsCpuFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
+        GetByPeriodCpuMetricsResponse ApiMetricsCpuFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Получает метрики CPU на заданном диапазоне времени</summary>
@@ -38,21 +38,21 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ApiMetricsCpuFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<GetByPeriodCpuMetricsResponse> ApiMetricsCpuFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken);
     
         /// <summary>Получает метрики DotNet на заданном диапазоне времени</summary>
         /// <param name="fromTime">Начальная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ApiMetricsDotnetFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
+        System.Threading.Tasks.Task<GetByPeriodDotNetMetricsResponse> ApiMetricsDotnetFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
     
         /// <summary>Получает метрики DotNet на заданном диапазоне времени</summary>
         /// <param name="fromTime">Начальная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        void ApiMetricsDotnetFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
+        GetByPeriodDotNetMetricsResponse ApiMetricsDotnetFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Получает метрики DotNet на заданном диапазоне времени</summary>
@@ -60,21 +60,21 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ApiMetricsDotnetFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<GetByPeriodDotNetMetricsResponse> ApiMetricsDotnetFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken);
     
         /// <summary>Получает метрики HDD на заданном диапазоне времени</summary>
         /// <param name="fromTime">Начальная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ApiMetricsHddFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
+        System.Threading.Tasks.Task<GetByPeriodHddMetricsResponse> ApiMetricsHddFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
     
         /// <summary>Получает метрики HDD на заданном диапазоне времени</summary>
         /// <param name="fromTime">Начальная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        void ApiMetricsHddFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
+        GetByPeriodHddMetricsResponse ApiMetricsHddFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Получает метрики HDD на заданном диапазоне времени</summary>
@@ -82,21 +82,21 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ApiMetricsHddFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<GetByPeriodHddMetricsResponse> ApiMetricsHddFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken);
     
         /// <summary>Получает метрики Network на заданном диапазоне времени</summary>
         /// <param name="fromTime">Начальная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ApiMetricsNetworkFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
+        System.Threading.Tasks.Task<GetByPeriodNetworkMetricsResponse> ApiMetricsNetworkFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
     
         /// <summary>Получает метрики Network на заданном диапазоне времени</summary>
         /// <param name="fromTime">Начальная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        void ApiMetricsNetworkFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
+        GetByPeriodNetworkMetricsResponse ApiMetricsNetworkFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Получает метрики Network на заданном диапазоне времени</summary>
@@ -104,21 +104,21 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ApiMetricsNetworkFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<GetByPeriodNetworkMetricsResponse> ApiMetricsNetworkFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken);
     
         /// <summary>Получает метрики Ram на заданном диапазоне времени</summary>
         /// <param name="fromTime">Начальная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ApiMetricsRamFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
+        System.Threading.Tasks.Task<GetByPeriodRamMetricsResponse> ApiMetricsRamFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
     
         /// <summary>Получает метрики Ram на заданном диапазоне времени</summary>
         /// <param name="fromTime">Начальная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        void ApiMetricsRamFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
+        GetByPeriodRamMetricsResponse ApiMetricsRamFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime);
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Получает метрики Ram на заданном диапазоне времени</summary>
@@ -126,7 +126,7 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ApiMetricsRamFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<GetByPeriodRamMetricsResponse> ApiMetricsRamFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken);
     
     }
     
@@ -170,7 +170,7 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task ApiMetricsCpuFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
+        public System.Threading.Tasks.Task<GetByPeriodCpuMetricsResponse> ApiMetricsCpuFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
         {
             return ApiMetricsCpuFromToAsync(fromTime, toTime, System.Threading.CancellationToken.None);
         }
@@ -180,9 +180,9 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public void ApiMetricsCpuFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
+        public GetByPeriodCpuMetricsResponse ApiMetricsCpuFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
         {
-            System.Threading.Tasks.Task.Run(async () => await ApiMetricsCpuFromToAsync(fromTime, toTime, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
+            return System.Threading.Tasks.Task.Run(async () => await ApiMetricsCpuFromToAsync(fromTime, toTime, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -191,7 +191,7 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task ApiMetricsCpuFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<GetByPeriodCpuMetricsResponse> ApiMetricsCpuFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken)
         {
             if (fromTime == null)
                 throw new System.ArgumentNullException("fromTime");
@@ -211,6 +211,7 @@ namespace Core.Client.Generated
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
     
                     PrepareRequest(client_, request_, urlBuilder_);
     
@@ -235,7 +236,12 @@ namespace Core.Client.Generated
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            return;
+                            var objectResponse_ = await ReadObjectResponseAsync<GetByPeriodCpuMetricsResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -268,7 +274,7 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task ApiMetricsDotnetFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
+        public System.Threading.Tasks.Task<GetByPeriodDotNetMetricsResponse> ApiMetricsDotnetFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
         {
             return ApiMetricsDotnetFromToAsync(fromTime, toTime, System.Threading.CancellationToken.None);
         }
@@ -278,9 +284,9 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public void ApiMetricsDotnetFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
+        public GetByPeriodDotNetMetricsResponse ApiMetricsDotnetFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
         {
-            System.Threading.Tasks.Task.Run(async () => await ApiMetricsDotnetFromToAsync(fromTime, toTime, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
+            return System.Threading.Tasks.Task.Run(async () => await ApiMetricsDotnetFromToAsync(fromTime, toTime, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -289,7 +295,7 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task ApiMetricsDotnetFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<GetByPeriodDotNetMetricsResponse> ApiMetricsDotnetFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken)
         {
             if (fromTime == null)
                 throw new System.ArgumentNullException("fromTime");
@@ -309,6 +315,7 @@ namespace Core.Client.Generated
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
     
                     PrepareRequest(client_, request_, urlBuilder_);
     
@@ -333,7 +340,12 @@ namespace Core.Client.Generated
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            return;
+                            var objectResponse_ = await ReadObjectResponseAsync<GetByPeriodDotNetMetricsResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -366,7 +378,7 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task ApiMetricsHddFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
+        public System.Threading.Tasks.Task<GetByPeriodHddMetricsResponse> ApiMetricsHddFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
         {
             return ApiMetricsHddFromToAsync(fromTime, toTime, System.Threading.CancellationToken.None);
         }
@@ -376,9 +388,9 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public void ApiMetricsHddFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
+        public GetByPeriodHddMetricsResponse ApiMetricsHddFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
         {
-            System.Threading.Tasks.Task.Run(async () => await ApiMetricsHddFromToAsync(fromTime, toTime, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
+            return System.Threading.Tasks.Task.Run(async () => await ApiMetricsHddFromToAsync(fromTime, toTime, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -387,7 +399,7 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task ApiMetricsHddFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<GetByPeriodHddMetricsResponse> ApiMetricsHddFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken)
         {
             if (fromTime == null)
                 throw new System.ArgumentNullException("fromTime");
@@ -407,6 +419,7 @@ namespace Core.Client.Generated
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
     
                     PrepareRequest(client_, request_, urlBuilder_);
     
@@ -431,7 +444,12 @@ namespace Core.Client.Generated
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            return;
+                            var objectResponse_ = await ReadObjectResponseAsync<GetByPeriodHddMetricsResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -464,7 +482,7 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task ApiMetricsNetworkFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
+        public System.Threading.Tasks.Task<GetByPeriodNetworkMetricsResponse> ApiMetricsNetworkFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
         {
             return ApiMetricsNetworkFromToAsync(fromTime, toTime, System.Threading.CancellationToken.None);
         }
@@ -474,9 +492,9 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public void ApiMetricsNetworkFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
+        public GetByPeriodNetworkMetricsResponse ApiMetricsNetworkFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
         {
-            System.Threading.Tasks.Task.Run(async () => await ApiMetricsNetworkFromToAsync(fromTime, toTime, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
+            return System.Threading.Tasks.Task.Run(async () => await ApiMetricsNetworkFromToAsync(fromTime, toTime, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -485,7 +503,7 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task ApiMetricsNetworkFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<GetByPeriodNetworkMetricsResponse> ApiMetricsNetworkFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken)
         {
             if (fromTime == null)
                 throw new System.ArgumentNullException("fromTime");
@@ -505,6 +523,7 @@ namespace Core.Client.Generated
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
     
                     PrepareRequest(client_, request_, urlBuilder_);
     
@@ -529,7 +548,12 @@ namespace Core.Client.Generated
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            return;
+                            var objectResponse_ = await ReadObjectResponseAsync<GetByPeriodNetworkMetricsResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -562,7 +586,7 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task ApiMetricsRamFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
+        public System.Threading.Tasks.Task<GetByPeriodRamMetricsResponse> ApiMetricsRamFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
         {
             return ApiMetricsRamFromToAsync(fromTime, toTime, System.Threading.CancellationToken.None);
         }
@@ -572,9 +596,9 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public void ApiMetricsRamFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
+        public GetByPeriodRamMetricsResponse ApiMetricsRamFromTo(System.DateTimeOffset fromTime, System.DateTimeOffset toTime)
         {
-            System.Threading.Tasks.Task.Run(async () => await ApiMetricsRamFromToAsync(fromTime, toTime, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
+            return System.Threading.Tasks.Task.Run(async () => await ApiMetricsRamFromToAsync(fromTime, toTime, System.Threading.CancellationToken.None)).GetAwaiter().GetResult();
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
@@ -583,7 +607,7 @@ namespace Core.Client.Generated
         /// <param name="toTime">Конечная метка времени с 01.01.1970 в формате DateTimeOffset</param>
         /// <returns>Все хорошо</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task ApiMetricsRamFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<GetByPeriodRamMetricsResponse> ApiMetricsRamFromToAsync(System.DateTimeOffset fromTime, System.DateTimeOffset toTime, System.Threading.CancellationToken cancellationToken)
         {
             if (fromTime == null)
                 throw new System.ArgumentNullException("fromTime");
@@ -603,6 +627,7 @@ namespace Core.Client.Generated
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
     
                     PrepareRequest(client_, request_, urlBuilder_);
     
@@ -627,7 +652,12 @@ namespace Core.Client.Generated
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            return;
+                            var objectResponse_ = await ReadObjectResponseAsync<GetByPeriodRamMetricsResponse>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -758,7 +788,125 @@ namespace Core.Client.Generated
         }
     }
 
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.3.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class CpuMetricDto 
+    {
+        [Newtonsoft.Json.JsonProperty("time", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset Time { get; set; }
     
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Value { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Id { get; set; }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.3.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class GetByPeriodCpuMetricsResponse 
+    {
+        [Newtonsoft.Json.JsonProperty("metrics", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<CpuMetricDto> Metrics { get; set; }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.3.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class DotNetMetricDto 
+    {
+        [Newtonsoft.Json.JsonProperty("time", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset Time { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Value { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Id { get; set; }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.3.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class GetByPeriodDotNetMetricsResponse 
+    {
+        [Newtonsoft.Json.JsonProperty("metrics", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<DotNetMetricDto> Metrics { get; set; }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.3.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class HddMetricDto 
+    {
+        [Newtonsoft.Json.JsonProperty("time", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset Time { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Value { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Id { get; set; }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.3.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class GetByPeriodHddMetricsResponse 
+    {
+        [Newtonsoft.Json.JsonProperty("metrics", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<HddMetricDto> Metrics { get; set; }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.3.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class NetworkMetricDto 
+    {
+        [Newtonsoft.Json.JsonProperty("time", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset Time { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Value { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Id { get; set; }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.3.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class GetByPeriodNetworkMetricsResponse 
+    {
+        [Newtonsoft.Json.JsonProperty("metrics", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<NetworkMetricDto> Metrics { get; set; }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.3.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class RamMetricDto 
+    {
+        [Newtonsoft.Json.JsonProperty("time", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset Time { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Value { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Id { get; set; }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.4.3.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class GetByPeriodRamMetricsResponse 
+    {
+        [Newtonsoft.Json.JsonProperty("metrics", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<RamMetricDto> Metrics { get; set; }
+    
+    
+    }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.11.1.0 (NJsonSchema v10.4.3.0 (Newtonsoft.Json v12.0.0.0))")]
     public partial class ApiException : System.Exception

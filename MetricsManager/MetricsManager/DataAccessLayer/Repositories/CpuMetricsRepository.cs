@@ -18,7 +18,7 @@ namespace MetricsManager.DataAccessLayer.Repositories
             _connectionString = dbProvider.GetConnectionString();
         }
 
-        public void Create(CpuMetric item)
+        public void Create(ApiCpuMetric item)
         {
             using var connection = new SQLiteConnection(_connectionString);
             connection.Execute("INSERT INTO cpumetrics(value, time, Agent_id) VALUES(@value, @time, @Agent_id)", 
@@ -29,11 +29,11 @@ namespace MetricsManager.DataAccessLayer.Repositories
                 });
         }
         
-        public IList<CpuMetric> GetByTimePeriod(DateTimeOffset from, DateTimeOffset to)
+        public IList<ApiCpuMetric> GetByTimePeriod(DateTimeOffset from, DateTimeOffset to)
         {
             using var connection = new SQLiteConnection(_connectionString);
             return connection
-                .Query<CpuMetric>(
+                .Query<ApiCpuMetric>(
                     "SELECT Id, Time, Value, Agent_Id AS AgentId FROM cpumetrics WHERE time BETWEEN @fromTime AND @ToTime",
                     new
                     {
@@ -43,11 +43,11 @@ namespace MetricsManager.DataAccessLayer.Repositories
                 .ToList();
         }
 
-        public IList<CpuMetric> GetByTimePeriodFromAgent(DateTimeOffset from, DateTimeOffset to, int agentId)
+        public IList<ApiCpuMetric> GetByTimePeriodFromAgent(DateTimeOffset from, DateTimeOffset to, int agentId)
         {
             using var connection = new SQLiteConnection(_connectionString);
             return connection
-                .Query<CpuMetric>(
+                .Query<ApiCpuMetric>(
                     "SELECT Id, Time, Value, Agent_Id AS AgentId FROM cpumetrics WHERE (time BETWEEN @fromTime AND @ToTime) AND (Agent_Id = @agent_Id)",
                     new
                     {
@@ -79,7 +79,7 @@ namespace MetricsManager.DataAccessLayer.Repositories
                 });
         }
 
-        public void Update(CpuMetric item)
+        public void Update(ApiCpuMetric item)
         {
             using (var connection = new SQLiteConnection(_connectionString))
             {
@@ -93,19 +93,19 @@ namespace MetricsManager.DataAccessLayer.Repositories
             }
         }
         
-        public IList<CpuMetric> GetAll()
+        public IList<ApiCpuMetric> GetAll()
         {
             using var connection = new SQLiteConnection(_connectionString);
             // читаем при помощи Query и в шаблон подставляем тип данных
             // объект которого Dapper сам и заполнит его поля
             // в соответсвии с названиями колонок
-            return connection.Query<CpuMetric>("SELECT Id, Time, Value FROM cpumetrics").ToList();
+            return connection.Query<ApiCpuMetric>("SELECT Id, Time, Value FROM cpumetrics").ToList();
         }
 
-        public CpuMetric GetById(int id)
+        public ApiCpuMetric GetById(int id)
         {
             using var connection = new SQLiteConnection(_connectionString);
-            return connection.QuerySingle<CpuMetric>("SELECT Id, Time, Value FROM cpumetrics WHERE id=@id",
+            return connection.QuerySingle<ApiCpuMetric>("SELECT Id, Time, Value FROM cpumetrics WHERE id=@id",
                 new {id = id});
         }
     }

@@ -43,7 +43,7 @@ namespace MetricsAgent.Controllers
         /// <response code="200">Все хорошо</response>
         /// <response code="400">Передали неправильные параметры</response>
         [HttpGet("from/{fromTime}/to/{toTime}")]
-        public IActionResult GetByTimePeriod(
+        public GetByPeriodCpuMetricsResponse GetByTimePeriod(
             [FromRoute] DateTimeOffset fromTime,
             [FromRoute] DateTimeOffset toTime)
         {
@@ -60,8 +60,7 @@ namespace MetricsAgent.Controllers
             {
                 response.Metrics.Add(_mapper.Map<CpuMetricDto>(metric));
             }
-
-            return Ok(response);
+            return response;
         }
     }
 }

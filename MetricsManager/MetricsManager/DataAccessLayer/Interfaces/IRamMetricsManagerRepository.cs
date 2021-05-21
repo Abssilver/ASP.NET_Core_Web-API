@@ -2,7 +2,7 @@
 
 namespace MetricsManager.DataAccessLayer.Interfaces
 {
-    public interface IRamMetricsManagerRepository : IManagerRepository<RamMetric>
+    public interface IRamMetricsManagerRepository : IManagerRepository<ApiRamMetric>
     {
     }
 }

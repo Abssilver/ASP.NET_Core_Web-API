@@ -2,7 +2,7 @@
 
 namespace MetricsManager.DataAccessLayer.Interfaces
 {
-    public interface ICpuMetricsManagerRepository : IManagerRepository<CpuMetric>
+    public interface ICpuMetricsManagerRepository : IManagerRepository<ApiCpuMetric>
     {
     }
 }

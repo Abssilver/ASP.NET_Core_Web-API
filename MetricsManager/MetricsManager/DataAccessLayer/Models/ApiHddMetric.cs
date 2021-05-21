@@ -2,7 +2,7 @@
 
 namespace MetricsManager.DataAccessLayer.Models
 {
-    public class RamMetric
+    public class ApiHddMetric
     {
         public int Id { get; set; } 
         public int Value { get; set; } 

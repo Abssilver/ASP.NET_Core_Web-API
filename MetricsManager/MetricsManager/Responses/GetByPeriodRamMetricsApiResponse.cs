@@ -5,6 +5,6 @@ namespace MetricsManager.Responses
 {
     public class GetByPeriodRamMetricsApiResponse
     {
-        public List<RamMetricDto> Metrics { get; set; }
+        public List<ApiRamMetricDto> Metrics { get; set; }
     }
 }

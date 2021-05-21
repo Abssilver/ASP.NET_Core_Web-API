@@ -36,7 +36,7 @@ namespace MetricsManagerTests
             _repositoryMock.Setup(repository =>
                     repository.GetByTimePeriodFromAgent(
                         It.IsAny<DateTimeOffset>(), It.IsAny<DateTimeOffset>(), It.IsAny<int>()))
-                .Returns(new List<RamMetric>());
+                .Returns(new List<ApiRamMetric>());
 
             _controller.GetMetricsFromAgent(agentId, fromTime, toTime);
 
@@ -54,7 +54,7 @@ namespace MetricsManagerTests
 
             _repositoryMock.Setup(repository =>
                     repository.GetByTimePeriod(It.IsAny<DateTimeOffset>(), It.IsAny<DateTimeOffset>()))
-                .Returns(new List<RamMetric>());
+                .Returns(new List<ApiRamMetric>());
 
             _controller.GetMetricsFromAllCluster(fromTime, toTime);
 

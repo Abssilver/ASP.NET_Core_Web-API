@@ -55,12 +55,12 @@ namespace MetricsManager.Controllers
 
             var response = new GetByPeriodCpuMetricsApiResponse
             {
-                Metrics = new List<CpuMetricDto>()
+                Metrics = new List<ApiCpuMetricDto>()
             };
 
             foreach (var metric in metrics)
             {
-                response.Metrics.Add(_mapper.Map<CpuMetricDto>(metric));
+                response.Metrics.Add(_mapper.Map<ApiCpuMetricDto>(metric));
             }
 
             return Ok(response);
@@ -91,12 +91,12 @@ namespace MetricsManager.Controllers
 
             var response = new GetByPeriodCpuMetricsApiResponse
             {
-                Metrics = new List<CpuMetricDto>()
+                Metrics = new List<ApiCpuMetricDto>()
             };
 
             foreach (var metric in metrics)
             {
-                response.Metrics.Add(_mapper.Map<CpuMetricDto>(metric));
+                response.Metrics.Add(_mapper.Map<ApiCpuMetricDto>(metric));
             }
 
             return Ok(response);

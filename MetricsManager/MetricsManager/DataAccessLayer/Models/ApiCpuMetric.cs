@@ -2,7 +2,7 @@
 
 namespace MetricsManager.DataAccessLayer.Models
 {
-    public class CpuMetric
+    public class ApiCpuMetric
     {
         public int Id { get; set; }
         public int Value { get; set; }

@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Reflection;
 using AutoMapper;
-using Core.Client.Generated;
 using Dapper;
 using FluentMigrator.Runner;
 using MetricsManager.Client;
@@ -82,11 +81,7 @@ namespace MetricsManager
             services.AddSingleton<INetworkMetricsManagerRepository,NetworkMetricsRepository>();
             services.AddSingleton<IRamMetricsManagerRepository,RamMetricsRepository>();
             services.AddSingleton<IDatabaseSettingsProvider, DatabaseSettingsProvider>();
-            
-            /*services.AddHttpClient<IMetricsAgentClient, MetricsAgentClient>()
-                .AddTransientHttpErrorPolicy(p => 
-                    p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(1000)));*/
-            
+
             ConfigureClient(services);
             ConfigureMapper(services);
             ConfigureMigration(services);

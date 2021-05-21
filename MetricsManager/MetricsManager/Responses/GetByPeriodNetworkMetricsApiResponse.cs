@@ -5,6 +5,6 @@ namespace MetricsManager.Responses
 {
     public class GetByPeriodNetworkMetricsApiResponse
     {
-        public List<NetworkMetricDto> Metrics { get; set; }
+        public List<ApiNetworkMetricDto> Metrics { get; set; }
     }
 }

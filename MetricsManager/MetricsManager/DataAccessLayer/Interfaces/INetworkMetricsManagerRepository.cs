@@ -2,7 +2,7 @@
 
 namespace MetricsManager.DataAccessLayer.Interfaces
 {
-    public interface INetworkMetricsManagerRepository : IManagerRepository<NetworkMetric>
+    public interface INetworkMetricsManagerRepository : IManagerRepository<ApiNetworkMetric>
     {
     }
 }

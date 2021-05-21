@@ -18,8 +18,7 @@ namespace MetricsManager.Jobs
 
         public CpuMetricJob(
             ICpuMetricsManagerRepository managerRepository, 
-            //IMetricsAgentClient client, 
-            ICpuMetricsAgentClient client,
+            ICpuMetricsAgentClient client, 
             IAgentInfoRepository agentsRepository)
         {
             _managerRepository = managerRepository;
@@ -36,14 +35,16 @@ namespace MetricsManager.Jobs
                 var metrics = _agentClient.GetCpuMetrics(new CpuMetricApiGetRequest
                     {
                         FromTime =  _managerRepository.GetLastRecordDate(), 
-                        ToTime = DateTimeOffset.UtcNow, 
+                        //TODO: косяк со временем, надо брать большее значение, чем текущая дата
+                        //ToTime = DateTimeOffset.UtcNow
+                        ToTime = DateTimeOffset.FromUnixTimeSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 86_400), 
                         ClientBaseAddress = info.Url.ToString(),
                     }
                 );
                 
                 metrics?.Metrics.ForEach(metric =>
                     {
-                        _managerRepository.Create(new CpuMetric
+                        _managerRepository.Create(new ApiCpuMetric
                         {
                             Time = DateTimeOffset.UtcNow,
                             Value = metric.Value,
