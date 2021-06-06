@@ -58,12 +58,16 @@ namespace MetricsManager.DataAccessLayer.Repositories
                 .ToList();
         }
 
-        public DateTimeOffset GetLastRecordDate()
+        public DateTimeOffset GetLastRecordDate(int agentId)
         {
             using var connection = new SQLiteConnection(_connectionString);
             
             var response = connection.QuerySingleOrDefault<GetLastTimeResponse>(
-                "SELECT MAX(Time) AS Time FROM networkmetrics"); 
+                "SELECT MAX(Time) AS Time FROM networkmetrics WHERE Agent_Id=@id",
+                new
+                {
+                    id = agentId
+                }); 
             return DateTimeOffset
                 .FromUnixTimeSeconds(response.Time);
         }

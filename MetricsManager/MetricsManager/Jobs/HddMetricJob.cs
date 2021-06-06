@@ -34,7 +34,7 @@ namespace MetricsManager.Jobs
             {
                 var metrics = _agentClient.GetHddMetrics(new HddMetricsApiGetRequest
                     {
-                        FromTime = _managerRepository.GetLastRecordDate(),
+                        FromTime = _managerRepository.GetLastRecordDate(info.Id),
                         //TODO: косяк со временем, надо брать большее значение, чем текущая дата
                         //ToTime = DateTimeOffset.UtcNow
                         ToTime = DateTimeOffset.FromUnixTimeSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 86_400),

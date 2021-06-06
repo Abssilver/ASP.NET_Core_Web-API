@@ -121,7 +121,7 @@ namespace MetricsManager.Controllers
         /// <response code="200">Все хорошо</response>
         /// <response code="400">Передали неправильные параметры</response>
         [HttpGet("get_agents")]
-        public IActionResult GetRegisterAgents()
+        public GetAgentsInfoResponse GetRegisterAgents()
         {
             _logger.LogInformation($"Запрос данных об агентах");
             
@@ -137,7 +137,7 @@ namespace MetricsManager.Controllers
                 response.Agents.Add(_mapper.Map<AgentInfoDto>(agent));
             }
 
-            return Ok(response);
+            return response;
         }
     }
 }

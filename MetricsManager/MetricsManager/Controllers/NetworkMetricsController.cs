@@ -45,7 +45,7 @@ namespace MetricsManager.Controllers
         /// <response code="200">Все хорошо</response>
         /// <response code="400">Передали неправильные параметры</response>
         [HttpGet("agent/{agentId}/from/{fromTime}/to/{toTime}")]
-        public IActionResult GetMetricsFromAgent(
+        public GetByPeriodNetworkMetricsApiResponse GetMetricsFromAgent(
             [FromRoute] int agentId,
             [FromRoute] DateTimeOffset fromTime,
             [FromRoute] DateTimeOffset toTime)
@@ -54,7 +54,7 @@ namespace MetricsManager.Controllers
             
             var metrics = _managerRepository.GetByTimePeriodFromAgent(fromTime, toTime, agentId);
 
-            var response = new GetByPeriodNetworkMetricsApiResponse()
+            var response = new GetByPeriodNetworkMetricsApiResponse
             {
                 Metrics = new List<ApiNetworkMetricDto>()
             };
@@ -64,7 +64,7 @@ namespace MetricsManager.Controllers
                 response.Metrics.Add(_mapper.Map<ApiNetworkMetricDto>(metric));
             }
 
-            return Ok(response);
+            return response;
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace MetricsManager.Controllers
         /// <response code="200">Все хорошо</response>
         /// <response code="400">Передали неправильные параметры</response>
         [HttpGet("cluster/from/{fromTime}/to/{toTime}")]
-        public IActionResult GetMetricsFromAllCluster(
+        public GetByPeriodNetworkMetricsApiResponse GetMetricsFromAllCluster(
             [FromRoute] DateTimeOffset fromTime, 
             [FromRoute] DateTimeOffset toTime)
         {
@@ -100,7 +100,7 @@ namespace MetricsManager.Controllers
                 response.Metrics.Add(_mapper.Map<ApiNetworkMetricDto>(metric));
             }
 
-            return Ok(response);
+            return response;
         }
     }
 }

@@ -1,0 +1,175 @@
+﻿<Window x:Class="MetricsManagerClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MetricsManagerClient.Cards"
+        mc:Ignorable="d"
+        Title="MetricsManagerClient" Height="800" Width="1600">
+    <Grid x:Name="GraphicsGrid" Grid.Row="3" Grid.Column="1">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Orientation="Horizontal" 
+                    Grid.Row="0" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Center"  
+                    Margin="0, 5, 20, 0"
+                    Width="Auto"
+                    Height="Auto">
+            <local:MaterialCardsCpu x:Name="CpuChart"
+                                 Margin="20, 10, 10, 10"
+                                 Width="450">
+            </local:MaterialCardsCpu>
+            <local:MaterialCardsDotNet x:Name="DotNetChart"
+                                 Margin="10, 10, 10, 10"
+                                 Width="450">
+            </local:MaterialCardsDotNet>
+            <local:MaterialCardsHdd x:Name="HddChart"
+                                 Margin="10, 10, 10, 10"
+                                 Width="450">
+            </local:MaterialCardsHdd>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" 
+                    Grid.Row="1" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Center" 
+                    Margin="0, 5, 20, 0"
+                    Width="Auto"
+                    Height="Auto">
+            <local:MaterialCardsNetwork x:Name="NetworkChart"
+                                 Margin="10, 10, 10, 10"
+                                 Width="450">
+            </local:MaterialCardsNetwork>
+            <local:MaterialCardsRam x:Name="RamChart"
+                                 Margin="10, 10, 10, 10"
+                                 Width="450">
+            </local:MaterialCardsRam>
+            <StackPanel Orientation="Vertical"
+                        Width="auto"
+                        Height="auto"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        Margin="0, 30, 0, 0">
+                <TextBlock HorizontalAlignment="Center" 
+                           TextWrapping="Wrap" 
+                           FontSize="20" 
+                           FontWeight="SemiBold">
+                    Выберете период для просмотра данных метрик
+                </TextBlock>
+                <Grid Margin="0, 10, 0, 10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Width="auto">
+                        <TextBlock HorizontalAlignment="Center" 
+                           TextWrapping="Wrap" 
+                           FontSize="18" 
+                           FontWeight="Bold">Начало измерения</TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Width="auto">
+                        <TextBlock HorizontalAlignment="Center" 
+                           TextWrapping="Wrap" 
+                           FontSize="18" 
+                           FontWeight="Bold">Конец измерения</TextBlock>
+                    </StackPanel>
+                </Grid>
+                
+                <StackPanel Orientation="Horizontal"
+                        Width="auto">
+                    <Calendar x:Name = "CalendarFrom" VerticalAlignment="Center"
+                      Margin="30,0,30,0"
+                      Width="auto"
+                      SelectedDatesChanged="Calendar_SelectedDateFromChanged">
+                    </Calendar>
+                    <Calendar x:Name = "CalendarTo" VerticalAlignment="Center"
+                      Margin="30,0,20,0"
+                      Width="auto"
+                      SelectedDatesChanged="Calendar_SelectedDateToChanged">
+                    </Calendar>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Width="auto"
+                            HorizontalAlignment="Center"
+                            Margin="15, 5, 10, 10">
+                    <Label HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="20, 10, 10, 10">Адрес менеджера:</Label>
+                    <TextBox x:Name="ManagerAddress" 
+                             Width="250" 
+                             Height="50"
+                             VerticalContentAlignment="Center"
+                             HorizontalContentAlignment="Center"
+                             Margin="0, 10, 20, 10"
+                             Text="http://localhost:51685">
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" 
+                    Grid.Row="2" 
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    Margin="20, 5, 50, 10">
+            <!--<Label HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="20, 10, 10, 10">Адрес агента:</Label>
+            <TextBox Width="200" 
+                     Height="Auto"
+                     VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Center"
+                     Margin="0, 10, 10, 10">
+                <TextBox.Text>
+                    http://localhost:51685
+                </TextBox.Text>
+            </TextBox>
+            <Button Width="200" Height="Auto" 
+                    Click="Button_Click"
+                    Margin="10, 10, 10, 10">Зарегистрировать агент
+            </Button>
+            <Button Width="200" Height="Auto" 
+                    Click="Button_Click"
+                    Margin="10, 10, 10, 10">Удалить агент
+            </Button>
+            <ComboBox Height="36" Width="200" 
+                      VerticalAlignment="Top"
+                      Margin="10, 10, 10, 10">
+            </ComboBox>-->
+            <Button Width="200" Height="Auto" 
+                    Click="Get_Metrics"
+                    Margin="10, 10, 20, 10">Получить метрики</Button>
+            <CheckBox x:Name="FollowAgentCheckBox"
+                      Width="250" Height="Auto" 
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Margin="10, 10, 20, 10"
+                      Click="Follow_The_Agent">
+                <TextBlock Margin="10, 0, 0, 0">
+                    Следить за клиентом
+                </TextBlock>
+            </CheckBox>
+        </StackPanel>
+    </Grid>
+</Window>
