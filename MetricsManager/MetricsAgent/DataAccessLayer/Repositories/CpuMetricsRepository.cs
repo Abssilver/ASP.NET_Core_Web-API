@@ -37,10 +37,13 @@ namespace MetricsAgent.DataAccessLayer.Repositories
         {
             using var connection = new SQLiteConnection(_connectionString);
             return connection
-                .Query<CpuMetric>(string.Format(
-                    "SELECT Id, Time, Value FROM cpumetrics WHERE time BETWEEN {0} AND {1}", 
-                    from.ToUnixTimeSeconds(), 
-                    to.ToUnixTimeSeconds()))
+                .Query<CpuMetric>(
+                    "SELECT Id, Time, Value FROM cpumetrics WHERE time BETWEEN @fromTime AND @ToTime",
+                    new
+                    {
+                        fromTime = from.ToUnixTimeSeconds(),
+                        ToTime = to.ToUnixTimeSeconds()
+                    })
                 .ToList();
         }
 
